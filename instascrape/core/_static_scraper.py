@@ -6,6 +6,8 @@ import csv
 from abc import ABC, abstractmethod
 from typing import Union, Dict, List, Any
 import warnings
+import sys
+import os
 
 import requests
 from bs4 import BeautifulSoup
@@ -235,7 +237,7 @@ class _StaticHtmlScraper(ABC):
     @staticmethod
     def _soup_from_html(html):
         """Instantiates BeautifulSoup from the given source"""
-        return BeautifulSoup(html, features="lxml")
+        return BeautifulSoup(html, features="html.parser")
 
     @staticmethod
     def _json_str_from_soup(soup):
